@@ -7,8 +7,6 @@ import Data.Aeson.Types (Parser)
 import Data.Aeson hiding (Object, Number, Bool, String, Array)
 import qualified Data.Aeson as A
 
-import Data.ByteString (ByteString)
-
 import Data.Hashable
 
 import qualified Data.HashMap.Strict as HM
