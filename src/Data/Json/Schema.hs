@@ -13,16 +13,11 @@ import qualified Data.HashMap.Strict as HM
 
 import Data.Monoid
 
-import Data.Proxy
-
 import Data.Scientific
 
 import Data.Text hiding (stripSuffix)
 
 import Data.Vector hiding (sequence)
-
-class ToSchema a where
-    toSchema :: Proxy a -> Schema
 
 data FieldQualifier = Plain
                     | Optional
