@@ -29,6 +29,6 @@ import Test.QuickCheck
 
 spec :: Spec
 spec =
-    describe "validation" $ do
+    describe "validation" $
         prop "any json should be it's own validation" $
           \(s::Schema) -> validate s (schemaToJSON s)

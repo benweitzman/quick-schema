@@ -47,7 +47,7 @@ sizedSchema n = oneof [ Bool <$> arbitrary
                       , Number <$> arbitrary
                       , String <$> arbitrary
                       , Array . fromList <$> vectorOf (n - 1) (sizedSchema (n `div` 5))
-                      , Object . HM.fromList <$> vectorOf (n - 1) ((,) <$> arbitrary <*> (sizedField (n `div` 5)))
+                      , Object . HM.fromList <$> vectorOf (n - 1) ((,) <$> arbitrary <*> sizedField (n `div` 5))
                       ]
 
 sizedField :: Int -> Gen Field

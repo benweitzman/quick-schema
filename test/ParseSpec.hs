@@ -36,4 +36,4 @@ spec =
             decode "{\"exactNum=\":50}" `shouldBe` Just (Object [("exactNum", Field Exact (Number 50))])
             decode "{\"num\":50}" `shouldBe` Just (Object [("num", Field Plain (Number 50))])
         prop "should make the round trip" $
-            \(s::Schema) -> (decode $ encode s) == Just s
+            \(s::Schema) -> decode (encode s) == Just s
