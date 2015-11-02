@@ -48,7 +48,7 @@ For example, we could encode a tagged union type:
     "type=": "Address",
     "data":
       {
-        "street": "Prospect Street,
+        "street": "Prospect Street",
         "number": 54,
         "city": "Cambridge"
       }
