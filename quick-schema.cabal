@@ -16,7 +16,8 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Data.Json.Schema
+  exposed-modules:     Data.Json.Schema,
+                       Data.Json.Schema.Validation
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.8 && <4.9,
