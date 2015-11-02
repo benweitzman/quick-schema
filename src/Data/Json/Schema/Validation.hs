@@ -12,6 +12,9 @@ import qualified Data.HashMap.Strict as HM
 
 import Data.Text hiding (all, any)
 
+isValidFor :: Value -> Schema -> Bool
+isValidFor = flip validate
+
 validate :: Schema -> Value -> Bool
 validate (Bool _) (A.Bool _) = True
 validate (Number _) (A.Number _) = True
