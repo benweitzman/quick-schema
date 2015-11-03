@@ -1,6 +1,11 @@
-module Data.Json.Schema.Validation where
+module Data.Json.Schema.Validation
+    (
+      isValidFor
+    , validate
+    , schemaToJSON
+    ) where
 
-import Data.Json.Schema
+import Data.Json.Schema.Types
 
 import Data.Aeson hiding (Object, Number, Array, String, Bool)
 

@@ -5,7 +5,6 @@
 module ValidationSpec where
 
 import Data.Json.Schema
-import Data.Json.Schema.Validation
 import TestUtils
 
 import Control.Monad
