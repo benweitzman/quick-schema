@@ -9,11 +9,19 @@ license:             MIT
 license-file:        LICENSE
 author:              Ben Weitzman
 maintainer:          benweitzman@gmail.com
--- copyright:
-category:            Concurrency
+copyright:           (c) 2015 Ben Weitzman
+category:            Data, JSON
 build-type:          Simple
--- extra-source-files:
 cabal-version:       >=1.10
+homepage:            https://github.com/benweitzman/quick-schema
+bug-reports:         https://github.com/benweitzman/quick-schema/issues
+
+extra-source-files:
+  README.md
+
+source-repository head
+  type: git
+  location: https://github.com/benweitzman/quick-schema.git
 
 library
   exposed-modules:     Data.Json.Schema
