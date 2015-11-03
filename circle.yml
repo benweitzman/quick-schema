@@ -13,4 +13,4 @@ test:
     - cabal configure --enable-tests --enable-library-coverage && cabal build
   post:
     - ../.cabal/bin/hpc-coveralls hspec --repo-token $COVERALLS_REPO_TOKEN
-    - cabal haddock --builddir=$CIRCLE_ARTIFACTS
+    - cabal configure --builddir=$CIRCLE_ARTIFACTS && cabal haddock --builddir=$CIRCLE_ARTIFACTS
