@@ -1,6 +1,9 @@
 # quick-schema
 Slimmed down json schema language and validator
 
+[![Build Status](https://img.shields.io/circleci/project/benweitzman/quick-schema.svg?style=flat-square)](https://circleci.com/gh/benweitzman/quick-schema)
+[![Coverage Status](https://img.shields.io/coveralls/benweitzman/quick-schema.svg?style=flat-square)](https://coveralls.io/github/benweitzman/quick-schema?branch=master)
+
 quick-schema defines a format for describe a restricted set of JSON document structures. It is represented in JSON and has the added benefit that a JSON document can be it's own be it's own schema. 
 
 quick-schema infers the structure of a JSON document by looking at the types of an example document. Consider the document
