@@ -5,10 +5,11 @@ machine:
 dependencies:
   override:
     - cabal install --only-dependencies --enable-tests
+  post:
+    - cabal install hpc-coveralls
 
 test:
   pre:
     - cabal configure --enable-tests --enable-library-coverage && cabal build
   post:
-    - cabal install hpc-coveralls
     - .cabal-sandbox/bin/hpc-coveralls hspec
