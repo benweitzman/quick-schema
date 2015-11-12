@@ -26,7 +26,8 @@ import Data.Vector hiding (sequence)
 
 data FieldQualifier = Plain
                     | Optional
-                    | Exact deriving (Eq, Show)
+                    | Exact
+                    | Flat deriving (Eq, Show)
 
 data Field = Field FieldQualifier Schema deriving (Eq, Show)
 
@@ -40,17 +41,24 @@ stripSuffix :: Text -> Text
 stripSuffix s
     | "=" `isSuffixOf` s = dropEnd 1 s
     | "?" `isSuffixOf` s = dropEnd 1 s
+    | "/" `isSuffixOf` s = dropEnd 1 s
     | otherwise = s
 
 addSuffix :: Text -> Field -> Text
 addSuffix k (Field Plain _) = k
 addSuffix k (Field Optional _) = k <> "?"
 addSuffix k (Field Exact _) = k <> "="
+addSuffix k (Field Flat _) = k <> "/"
 
 parseField :: Text -> Value -> Parser Field
 parseField key value
     | "=" `isSuffixOf` key = Field Exact <$> parseJSON value
     | "?" `isSuffixOf` key = Field Optional <$> parseJSON value
+    | "/" `isSuffixOf` key = do parsed <- parseJSON value
+                                case parsed of
+                                  v@(Array _) -> return $ Field Flat v
+
+                                  _ -> mempty
     | otherwise = Field Plain <$> parseJSON value
 
 mapKeys :: (Hashable k1, Hashable k2, Eq k2) => (k1 -> k2) -> HM.HashMap k1 v -> HM.HashMap k2 v

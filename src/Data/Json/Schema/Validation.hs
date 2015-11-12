@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedLists #-}
+
 module Data.Json.Schema.Validation
     (
       isValidFor
@@ -32,6 +34,12 @@ validateField :: Field -> HM.HashMap Text Value -> Text -> Bool
 validateField (Field Plain s) m key = fromMaybe False $ validate s <$> HM.lookup key m
 validateField (Field Exact s) m key = fromMaybe False $ (== schemaToJSON s) <$> HM.lookup key m
 validateField (Field Optional s) m key = fromMaybe True $ validate s <$> HM.lookup key m
+validateField (Field Flat s@(Array ss)) m key = case HM.lookup key m of
+  Just v -> validate s (A.Array [v])
+
+  _ -> False
+validateField _ _ _ = False
+
 
 schemaToJSON :: Schema -> Value
 schemaToJSON (Bool b) = A.Bool b
